@@ -1329,8 +1329,8 @@ string message::format_many_ids(const string& id)
 
 vector<string> message::parse_many_ids(const string& ids) const
 {
-    if (!_strict_mode && ids.empty())
-        return {};
+    if (!_strict_mode /*&& ids.empty()*/)
+        return vector<string>{ids};
 
     vector<string> idv;
     const regex rgx(R"(<([a-zA-Z0-9\!#\$%&'\*\+\-\./=\?\^\_`\{\|\}\~]+)\@([a-zA-Z0-9\!#\$%&'\*\+\-\./=\?\^\_`\{\|\}\~]+)>)");
