@@ -1,13 +1,12 @@
 
 # mailio #
 
-*mailio* is a cross platform C++ library for MIME format and SMTP, POP3 and IMAP protocols. It is based on the standard C++ 17 and Boost library.
+mailioは、MIMEフォーマットとSMTP、POP3、IMAPプロトコルのためのクロスプラットフォームなC++ライブラリです。標準C++ 17とBoostライブラリをベースにしています。
 
 
-# Examples #
+# 例 #
 
-To send a mail, one has to create `message` object and set it's attributes as author, recipient, subject and so on. Then, an SMTP connection
-is created by constructing `smtp` (or `smtps`) class. The message is sent over the connection:
+メールを送信するには、messageオブジェクトを作成して、作成者、宛先、件名などの情報を設定する必要があります。それから、SMTP接続は `smtp` (または `smtps`) クラスを作成することによってできます。メッセージはこの接続を介して送信されます。
 
 ```cpp
 message msg;
@@ -21,8 +20,9 @@ conn.authenticate("mailio@gmail.com", "mailiopass", smtps::auth_method_t::START_
 conn.submit(msg);
 ```
 
-To receive a mail, a `message` object is created to store the received message. Mail can be received over POP3 or IMAP, depending of mail server setup.
-If POP3 is used, then instance of `pop3` (or `pop3s`) class is created and message is fetched:
+メールを受信するには、受信したメッセージを格納する `message` オブジェクトを作成します。メールは、メールサーバの設定によって、POP3 または IMAP で受信することができます。
+POP3 を使用する場合は、`pop3` (または `pop3s`) クラスのインスタンスを作成して、メッセージを取得します。
+
 
 ```cpp
 pop3s conn("pop.mail.yahoo.com", 995);
@@ -31,7 +31,7 @@ message msg;
 conn.fetch(1, msg);
 ```
 
-Receiving a message over IMAP is analogous. Since IMAP recognizes folders, then one has to be specified, like *inbox*:
+IMAPでメッセージを受信する時のコードは先ほどのコードと似ています。IMAPはフォルダを認識するので、*inbox*のようにフォルダを指定する必要があります。
 
 ```cpp
 imaps conn("imap.gmail.com", 993);
